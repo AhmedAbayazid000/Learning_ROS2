@@ -1,5 +1,7 @@
 #include "rclcpp/rclcpp.hpp"
 #include "example_interfaces/msg/int32.hpp"
+#include "example_interfaces/srv/set_bool.hpp"
+
 
 
 using namespace std::placeholders;
@@ -15,9 +17,19 @@ public:
              std::bind(&Number_Counter::callbackNumber, this, _1));
             publisher_ = this->create_publisher<example_interfaces::msg::Int32>("/number_count", 10);
         RCLCPP_INFO(this->get_logger(), "Number counter Node has been started");
+        service_ = this->create_service<example_interfaces::srv::SetBool>(
+            "reset_counter", std::bind(&Number_Counter::callbackResetCounter, this, _1, _2));
     }
 
 private:
+    void callbackResetCounter(const example_interfaces::srv::SetBool::Request::SharedPtr request,
+                            const example_interfaces::srv::SetBool::Response::SharedPtr response){
+        if (request->data) {
+            counter_ = 0; 
+            response->success = true; 
+    }
+}
+
     void callbackNumber(const example_interfaces::msg::Int32::SharedPtr msg){
     RCLCPP_INFO(this->get_logger(), "%d", msg->data);
     counter_++;
@@ -33,6 +45,7 @@ private:
     }
 
     int counter_=0;
+    rclcpp::Service<example_interfaces::srv::SetBool>::SharedPtr service_;
     rclcpp::Subscription<example_interfaces::msg::Int32>::SharedPtr subscriber_;
     rclcpp::Publisher<example_interfaces::msg::Int32>::SharedPtr publisher_;
 };
