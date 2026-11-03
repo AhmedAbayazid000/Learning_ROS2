@@ -2,14 +2,14 @@ rosbag2_bagfile_information:
   version: 9
   storage_identifier: mcap
   duration:
-    nanoseconds: 23921916530
+    nanoseconds: 11999939539
   starting_time:
-    nanoseconds_since_epoch: 1782934696130788836
-  message_count: 178
+    nanoseconds_since_epoch: 1791658062174403004
+  message_count: 5
   topics_with_message_count:
     - topic_metadata:
-        name: /turtle1/cmd_vel
-        type: geometry_msgs/msg/Twist
+        name: /number_count
+        type: example_interfaces/msg/Int32
         serialization_format: cdr
         offered_qos_profiles:
           - history: unknown
@@ -27,18 +27,18 @@ rosbag2_bagfile_information:
               sec: 9223372036
               nsec: 854775807
             avoid_ros_namespace_conventions: false
-        type_description_hash: RIHS01_9c45bf16fe0983d80e3cfe750d6835843d265a9a6c46bd2e609fcddde6fb8d2a
-      message_count: 178
+        type_description_hash: RIHS01_5cd04cd7f3adb9d6c6064c316047b24c76622eb89144f300b536d657fd55e652
+      message_count: 5
   compression_format: ""
   compression_mode: ""
   relative_file_paths:
-    - test1_0.mcap
+    - rosbag2_2026_10_10-20_47_41_0.mcap
   files:
-    - path: test1_0.mcap
+    - path: rosbag2_2026_10_10-20_47_41_0.mcap
       starting_time:
-        nanoseconds_since_epoch: 1782934696130788836
+        nanoseconds_since_epoch: 1791658062174403004
       duration:
-        nanoseconds: 23921916530
-      message_count: 178
+        nanoseconds: 11999939539
+      message_count: 5
   custom_data: ~
   ros_distro: jazzy
