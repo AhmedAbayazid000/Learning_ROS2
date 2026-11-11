@@ -11,8 +11,8 @@ public:
         publisher_= this->create_publisher<my_robot_interfaces::msg::HardWareStatus>("hardware_status", 10);
         timer_=this->create_wall_timer(1s, std::bind(&HardWareStatusPublisherNode::publishStr, this));
         RCLCPP_INFO(this->get_logger(), "Hardware Status Publisher Node has been started"); 
-        this->declare_parameter<std::string>("robot_name", "R2D2");
-        robot_name_=this->get_parameter("robot_name").as_string();
+        
+        
     }
  
 private:
